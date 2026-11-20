@@ -45,62 +45,171 @@
             </plane>
           </geometry>
           <material>
-            <ambient>0.5 0.5 0.5 1</ambient>
-            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <ambient>0.6 0.6 0.6 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- Wall ahead -->
-    <model name="wall">
+    <!-- Enclosing Boundary Walls (8m x 6m room, height 0.6m) -->
+    <!-- North Wall (at x = 5.0, ahead in front of room) -->
+    <model name="wall_front">
       <static>true</static>
-      <pose>3 0 0.25 0 0 0</pose>
+      <pose>5.0 0.0 0.3 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>0.2 3 0.5</size></box></geometry>
+          <geometry><box><size>0.2 6.2 0.6</size></box></geometry>
         </collision>
         <visual name="visual">
-          <geometry><box><size>0.2 3 0.5</size></box></geometry>
+          <geometry><box><size>0.2 6.2 0.6</size></box></geometry>
           <material>
-            <ambient>0.8 0.3 0.3 1</ambient>
-            <diffuse>0.8 0.3 0.3 1</diffuse>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- Box to the left -->
-    <model name="box_obstacle">
+    <!-- South Wall (behind the robot spawn at x = -2.0) -->
+    <model name="wall_back">
       <static>true</static>
-      <pose>1.5 1.2 0.15 0 0 0</pose>
+      <pose>-2.0 0.0 0.3 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <geometry><box><size>0.2 6.2 0.6</size></box></geometry>
         </collision>
         <visual name="visual">
-          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <geometry><box><size>0.2 6.2 0.6</size></box></geometry>
           <material>
-            <ambient>0.3 0.7 0.3 1</ambient>
-            <diffuse>0.3 0.7 0.3 1</diffuse>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- Cylinder to the right -->
-    <model name="cylinder_obstacle">
+    <!-- Left Wall (at y = 3.0) -->
+    <model name="wall_left">
       <static>true</static>
-      <pose>1.8 -1.0 0.2 0 0 0</pose>
+      <pose>1.5 3.0 0.3 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><cylinder><radius>0.2</radius><length>0.4</length></cylinder></geometry>
+          <geometry><box><size>7.2 0.2 0.6</size></box></geometry>
         </collision>
         <visual name="visual">
-          <geometry><cylinder><radius>0.2</radius><length>0.4</length></cylinder></geometry>
+          <geometry><box><size>7.2 0.2 0.6</size></box></geometry>
           <material>
-            <ambient>0.3 0.3 0.8 1</ambient>
-            <diffuse>0.3 0.3 0.8 1</diffuse>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Right Wall (at y = -3.0) -->
+    <model name="wall_right">
+      <static>true</static>
+      <pose>1.5 -3.0 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>7.2 0.2 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>7.2 0.2 0.6</size></box></geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Main Obstacle Block 1: Right in the robot's forward path, offset slightly to test turning -->
+    <model name="obstacle_block_main">
+      <static>true</static>
+      <pose>1.8 -0.3 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.7 0.7 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.7 0.7 0.6</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Secondary Obstacle Block 2: Further ahead on left side -->
+    <model name="obstacle_block_secondary">
+      <static>true</static>
+      <pose>3.4 1.2 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.6 0.6 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 0.6</size></box></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Marker / Cone 1 (orange cylinder) -->
+    <model name="traffic_cone_1">
+      <static>true</static>
+      <pose>0.8 1.4 0.2 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+          <material>
+            <ambient>1.0 0.3 0.0 1</ambient>
+            <diffuse>1.0 0.3 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Marker / Cone 2 (orange cylinder) -->
+    <model name="traffic_cone_2">
+      <static>true</static>
+      <pose>1.5 -1.6 0.2 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+          <material>
+            <ambient>1.0 0.3 0.0 1</ambient>
+            <diffuse>1.0 0.3 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Marker / Cone 3 (orange cylinder ahead) -->
+    <model name="traffic_cone_3">
+      <static>true</static>
+      <pose>3.5 -0.6 0.2 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.15</radius><length>0.4</length></cylinder></geometry>
+          <material>
+            <ambient>1.0 0.3 0.0 1</ambient>
+            <diffuse>1.0 0.3 0.0 1</diffuse>
           </material>
         </visual>
       </link>

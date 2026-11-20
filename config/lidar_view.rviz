@@ -1,0 +1,68 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Plane Cell Count: 20
+      Normal Cell Count: 0
+      Cell Size: 1
+      Line Style: Lines
+      Color: 160; 160; 164
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Axes: true
+      Show Names: false
+    - Class: rviz_default_plugins/LaserScan
+      Name: LaserScan (LiDAR)
+      Enabled: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /scan
+      Size (m): 0.08
+      Style: Points
+      Color Transformer: FlatColor
+      Color: 255; 0; 0
+    - Class: rviz_default_plugins/Path
+      Name: Trajectory Path
+      Enabled: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /path
+      Color: 0; 255; 50
+      Line Style: Lines
+      Line Width: 0.04
+    - Class: rviz_default_plugins/Odometry
+      Name: Odometry
+      Enabled: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /odom
+      Shape: Axes
+  Global Options:
+    Fixed Frame: odom
+    Frame Rate: 30
