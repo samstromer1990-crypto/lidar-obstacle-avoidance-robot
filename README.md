@@ -108,7 +108,7 @@ The simulation demonstrates:
 
 ### Project Demonstration
 
-https://github.com/user-attachments/assets/obstacle_avoidance_demo.mp4
+
 
 > **Demonstration Video:** The complete simulation recording is available in the repository at [`media/obstacle_avoidance_demo.mp4`](media/obstacle_avoidance_demo.mp4).
 
